@@ -13,7 +13,7 @@ export const Signout = () => {
 
   console.log('auth', auth)
 
-  if (auth.isAuthenticated) {
+  if (auth.isAuthenticated()) {
     return <button onClick={signout}>Signout</button>
   }
   return null
