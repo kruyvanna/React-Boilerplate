@@ -13,10 +13,12 @@ import { PrivateRoute } from './PrivateRoute'
 import { PublicPage } from './Public'
 import { ProtectedPage } from './Protected'
 import { Login } from './Login'
+import { Signout } from './Signout'
 
 export const Root = () => {
   return (
     <Router>
+      <Signout></Signout>
       <div>
         <ul>
           <li>
