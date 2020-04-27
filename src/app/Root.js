@@ -14,10 +14,12 @@ import { PublicPage } from './Public'
 import { ProtectedPage } from './Protected'
 import { Login } from './Auth/Login'
 import { Signout } from './Auth/Signout'
+import { Header } from './Header/Header'
 
 export const Root = () => {
   return (
     <Router>
+      <Header></Header>
       <Signout></Signout>
       <div>
         <ul>
