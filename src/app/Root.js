@@ -9,11 +9,11 @@ import {
   useLocation
 } from 'react-router-dom'
 
-import { PrivateRoute } from './PrivateRoute'
+import { PrivateRoute } from './Auth/PrivateRoute'
 import { PublicPage } from './Public'
 import { ProtectedPage } from './Protected'
-import { Login } from './Login'
-import { Signout } from './Signout'
+import { Login } from './Auth/Login'
+import { Signout } from './Auth/Signout'
 
 export const Root = () => {
   return (
