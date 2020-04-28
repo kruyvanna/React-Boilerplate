@@ -53,7 +53,9 @@ export const Login = () => {
                 </div>
 
                 <div class="field">
-                  <button class="button is-success">Login</button>
+                  <button class="button is-success" onClick={login}>
+                    Login
+                  </button>
                 </div>
               </form>
             </div>
