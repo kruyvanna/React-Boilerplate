@@ -2,8 +2,6 @@ import React, { useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
 import { NavLink } from 'react-router-dom'
 
-import { auth } from './auth'
-
 export const UserHeader = () => {
   const [user, setUser] = useContext(UserContext)
 
@@ -13,7 +11,6 @@ export const UserHeader = () => {
     })
   }
 
-  console.log('user', user)
   return (
     <div className="navbar-item has-dropdown is-hoverable">
       <NavLink
@@ -30,10 +27,4 @@ export const UserHeader = () => {
       </div>
     </div>
   )
-
-  // if (user) {
-  //   return <div>Logged In</div>
-  // } else {
-  //   return <div>Sign In</div>
-  // }
 }

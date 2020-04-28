@@ -1,33 +1,25 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
 import { useHistory, useLocation } from 'react-router-dom'
-
-import { auth } from './auth'
 
 export const Login = () => {
   let history = useHistory()
   let location = useLocation()
   const [user, setUser] = useContext(UserContext)
 
-  useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(user))
-    console.log('saving to localStorage', user)
-  }, [user])
-
   let { from } = location.state || { from: { pathname: '/' } }
-  console.log('from', from)
 
   let login = () => {
-    setUser({
+    const toBeSavedUser = {
       name: 'Vanna',
       loggedIn: true
-    })
+    }
+    setUser(toBeSavedUser)
 
-    // auth.authenticate(() => {
+    localStorage.setItem('user', JSON.stringify(toBeSavedUser))
     history.replace(from)
-    // })
   }
-  // return <button onClick={login}>Login</button>
+
   return (
     <section className="hero is-primary is-fullheight">
       <div className="hero-body">
