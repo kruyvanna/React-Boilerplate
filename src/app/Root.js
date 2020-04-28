@@ -7,6 +7,9 @@ import { ProtectedPage } from './Protected'
 import { Login } from './Auth/Login'
 import { Header } from './Header/Header'
 import { UserContextProvider } from './Context/UserContext'
+import { ProductListGraphed } from './Product/ProductListGraphed'
+
+import './Apollo/Client'
 
 export const Root = () => {
   return (
@@ -30,6 +33,9 @@ export const Root = () => {
           </Route>
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/products">
+            <ProductListGraphed></ProductListGraphed>
           </Route>
           <PrivateRoute path="/protected">
             <ProtectedPage></ProtectedPage>
