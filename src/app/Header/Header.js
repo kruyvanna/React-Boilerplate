@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 
+import { UserHeader } from '../Auth/UserHeader'
+
 export const Header = () => {
   return (
     <nav className="navbar is-primary no-print">
@@ -32,6 +34,7 @@ export const Header = () => {
           >
             BRAND
           </NavLink>
+          <UserHeader></UserHeader>
         </div>
       </div>
     </nav>
