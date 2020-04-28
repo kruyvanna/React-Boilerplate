@@ -15,7 +15,7 @@ export const Login = () => {
   let login = () => {
     setUser({
       name: 'Vanna',
-      isAuthenticated: true
+      loggedIn: true
     })
     // auth.authenticate(() => {
     history.replace(from)

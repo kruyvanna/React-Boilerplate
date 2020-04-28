@@ -9,7 +9,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
     <Route
       {...rest}
       render={({ location }) =>
-        user ? (
+        user.loggedIn ? (
           children
         ) : (
           <Redirect

@@ -9,13 +9,16 @@ export const Signout = () => {
   const [user, setUser] = useContext(UserContext)
 
   let signout = () => {
-    setUser(null)
+    setUser({
+      loggedIn: false
+    })
     // auth.signout(() => {
     history.push('/')
     // })
   }
 
-  if (user) {
+  if (user.loggedIn) {
+    console.log('user.loggedIn', user)
     return <button onClick={signout}>Signout</button>
   }
   return null
