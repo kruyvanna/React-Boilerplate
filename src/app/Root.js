@@ -13,7 +13,6 @@ import { PrivateRoute } from './Auth/PrivateRoute'
 import { PublicPage } from './Public'
 import { ProtectedPage } from './Protected'
 import { Login } from './Auth/Login'
-import { Signout } from './Auth/Signout'
 import { Header } from './Header/Header'
 import { UserContextProvider } from './Context/UserContext'
 
@@ -22,7 +21,6 @@ export const Root = () => {
     <Router>
       <UserContextProvider>
         <Header></Header>
-        <Signout></Signout>
         <div>
           <ul>
             <li>
