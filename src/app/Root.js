@@ -8,7 +8,7 @@ import { Login } from './Auth/Login'
 import { Header } from './Header/Header'
 import { UserContextProvider } from './Context/UserContext'
 import { ProductListGraphed } from './Product/ProductListGraphed'
-
+import { SampleForm } from './Form/SampleForm'
 import './Apollo/Client'
 
 export const Root = () => {
@@ -16,15 +16,20 @@ export const Root = () => {
     <Router>
       <UserContextProvider>
         <Header></Header>
-        <div>
-          <ul>
-            <li>
-              <Link to="/public">Public Page</Link>
-            </li>
-            <li>
-              <Link to="/protected">Protected Page</Link>
-            </li>
-          </ul>
+        <div className="container">
+          <div className="level">
+            <div className="level-left">
+              <div className="level-item">
+                <Link to="/public">Public Page</Link>
+              </div>
+              <div className="level-item">
+                <Link to="/protected">Protected Page</Link>
+              </div>
+              <div className="level-item">
+                <Link to="/form">Form Page</Link>
+              </div>
+            </div>
+          </div>
         </div>
 
         <Switch>
@@ -36,6 +41,9 @@ export const Root = () => {
           </Route>
           <Route path="/products">
             <ProductListGraphed></ProductListGraphed>
+          </Route>
+          <Route path="/form">
+            <SampleForm></SampleForm>
           </Route>
           <PrivateRoute path="/protected">
             <ProtectedPage></ProtectedPage>

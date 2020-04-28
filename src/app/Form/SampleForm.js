@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const PublicPage = () => {
+export const SampleForm = () => {
   return (
     <div className="container">
-      <h2>Public Page Content Here</h2>
+      <div>Form here</div>
     </div>
   )
 }

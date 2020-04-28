@@ -1,5 +1,9 @@
 import React from 'react'
 
 export const ProtectedPage = () => {
-  return <h2>Protected Page</h2>
+  return (
+    <div className="container">
+      <h2>Protected Page Content Here</h2>
+    </div>
+  )
 }
