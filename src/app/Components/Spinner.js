@@ -12,7 +12,7 @@ export const Spinner = () => {
   return (
     <Container>
       <span class="icon has-text-success">
-        <i class="fas fa-3x fa-spinner fa-pulse"></i>
+        <i class="fas fa-3x fa-circle-notch fa-spin"></i>
       </span>
     </Container>
   )
