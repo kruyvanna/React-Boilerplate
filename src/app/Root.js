@@ -28,6 +28,9 @@ export const Root = () => {
               <div className="level-item">
                 <Link to="/form">Form Page</Link>
               </div>
+              <div className="level-item">
+                <Link to="/spinner">Spinner</Link>
+              </div>
             </div>
           </div>
         </div>
