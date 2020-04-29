@@ -9,6 +9,7 @@ import { Header } from './Header/Header'
 import { UserContextProvider } from './Context/UserContext'
 import { ProductListGraphed } from './Product/ProductListGraphed'
 import { SampleForm } from './Form/SampleForm'
+import { ComponentsShowCase } from './Components'
 import './Apollo/Client'
 
 export const Root = () => {
@@ -29,7 +30,7 @@ export const Root = () => {
                 <Link to="/form">Form Page</Link>
               </div>
               <div className="level-item">
-                <Link to="/spinner">Spinner</Link>
+                <Link to="/components">Components</Link>
               </div>
             </div>
           </div>
@@ -47,6 +48,9 @@ export const Root = () => {
           </Route>
           <Route path="/form">
             <SampleForm></SampleForm>
+          </Route>
+          <Route path="/components">
+            <ComponentsShowCase></ComponentsShowCase>
           </Route>
           <PrivateRoute path="/protected">
             <ProtectedPage></ProtectedPage>
