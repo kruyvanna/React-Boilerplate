@@ -11,8 +11,8 @@ const Container = styled.div`
 export const Spinner = () => {
   return (
     <Container>
-      <span class="icon has-text-success">
-        <i class="fas fa-3x fa-circle-notch fa-spin"></i>
+      <span className="icon has-text-success">
+        <i className="fas fa-3x fa-circle-notch fa-spin"></i>
       </span>
     </Container>
   )
