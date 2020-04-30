@@ -21,7 +21,7 @@ Runs the app in the development mode.<br /> Open
 The page will reload if you make edits.<br /> You will also see any lint errors
 in the console.
 
-### yarn storybook
+### `yarn storybook`
 
 Run storybook to view component demos
 
