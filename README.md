@@ -6,6 +6,8 @@ This project was bootstrapped with
 -   Authentication flow
 -   Form example
 -   Apollo GraphQL
+-   Storybook
+-   React Router
 -   Font awesome
 -   Bulma css
 
