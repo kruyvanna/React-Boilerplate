@@ -6,6 +6,7 @@ This project was bootstrapped with
 -   Authentication flow
 -   Form example
 -   Apollo GraphQL
+-   Storybook
 -   Font awesome
 -   Bulma css
 
