@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { UserContext } from '../Context/UserContext'
+import { useUser } from '../Context/UserContext'
 import { NavLink } from 'react-router-dom'
 
 export const UserHeader = () => {
-  const [user, setUser] = useContext(UserContext)
+  const [user, setUser] = useUser()
 
   const logout = () => {
     setUser({

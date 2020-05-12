@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, useContext, createContext } from 'react'
 
 export const UserContext = createContext([])
 
@@ -17,4 +17,8 @@ export const UserContextProvider = (props) => {
       {props.children}
     </UserContext.Provider>
   )
+}
+
+export const useUser = () => {
+  return useContext(UserContext)
 }

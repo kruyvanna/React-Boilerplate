@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import { UserContext } from '../Context/UserContext'
+import { useUser } from '../Context/UserContext'
 import { useHistory, useLocation } from 'react-router-dom'
 
 export const Login = () => {
   let history = useHistory()
   let location = useLocation()
-  const [user, setUser] = useContext(UserContext)
+  const [user, setUser] = useUser()
 
   let { from } = location.state || { from: { pathname: '/' } }
 
