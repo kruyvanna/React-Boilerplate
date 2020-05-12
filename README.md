@@ -7,6 +7,7 @@ This project was bootstrapped with
 -   Form example
 -   Apollo GraphQL
 -   Storybook
+-   React Router
 -   Font awesome
 -   Bulma css
 
