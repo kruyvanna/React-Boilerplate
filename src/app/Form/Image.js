@@ -1,25 +1,27 @@
 import React from 'react'
 import { useField } from 'formik'
 
+import { ImageUpload } from '../Components'
+
 export const Image = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props)
   const { name, onChange, onBlur, value } = field
   const { setValue } = helpers
 
-  console.log('field', field)
-  console.log('meta', meta)
-  console.log('helpers', helpers)
+  // console.log('field', field)
+  // console.log('meta', meta)
+  // console.log('helpers', helpers)
 
-  function handleChange(e) {
-    const value = e.target.value
-    setValue(value)
+  function handleImageUploaded(url) {
+    // const value = e.target.value
+    setValue(url)
   }
   return (
     <div className="field">
       <h2>Image upload</h2>
       <label className="label">{label}</label>
       <div className="control">
-        <input className="input" type="text" onChange={handleChange} />
+        <ImageUpload onImageUploaded={handleImageUploaded}></ImageUpload>
       </div>
 
       {meta.touched && meta.error ? (

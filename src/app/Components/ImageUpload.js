@@ -8,6 +8,7 @@ export const ImageUpload = ({ onImageUploaded }) => {
   const maxMbFileSize = 5
 
   function onFilesChange(fileObjects) {
+    console.log('onFilesChange', fileObjects)
     if (fileObjects.length == 0) {
       return
     }
@@ -48,14 +49,22 @@ export const ImageUpload = ({ onImageUploaded }) => {
     >
       {({ imageList, onImageUpload, onImageRemoveAll }) => (
         <div>
-          <button onClick={onImageUpload}>Upload images</button>
-          <button onClick={onImageRemoveAll}>Remove all images</button>
+          <button type="button" onClick={onImageUpload}>
+            Upload images
+          </button>
+          <button type="button" onClick={onImageRemoveAll}>
+            Remove all images
+          </button>
 
           {imageList.map((image) => (
             <div key={image.key}>
               <img src={image.dataURL} />
-              <button onClick={image.onUpdate}>Update</button>
-              <button onClick={image.onRemove}>Remove</button>
+              <button type="button" onClick={image.onUpdate}>
+                Update
+              </button>
+              <button type="button" onClick={image.onRemove}>
+                Remove
+              </button>
             </div>
           ))}
         </div>

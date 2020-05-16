@@ -11,7 +11,7 @@ export default {
 }
 
 const initialValues = {
-  name: ''
+  image: ''
 }
 
 export const Default = () => {
@@ -21,7 +21,10 @@ export const Default = () => {
       onSubmit={action('submit form with values')}
     >
       <Form>
-        <Image label="Name" name="name" type="text" placeholder="Vanna"></Image>
+        <Image label="Image" name="image" type="text"></Image>
+        <button className="button" type="submit">
+          Submit
+        </button>
       </Form>
     </Formik>
   )
