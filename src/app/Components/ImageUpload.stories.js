@@ -10,5 +10,5 @@ export default {
 }
 
 export const Default = () => (
-  <ImageUpload onConfirm={action('Confirm clicked')}></ImageUpload>
+  <ImageUpload onImageUploaded={action('on image uploaded')}></ImageUpload>
 )
