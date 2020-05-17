@@ -37,7 +37,7 @@ export const ImageUploadUI = ({
   onDeleteConfirm
 }) => {
   function renderLeftContent() {
-    if (status === 'initial') {
+    if (status === 'initial' || status === 'error') {
       return (
         <span className="icon is-large">
           <i className="fa fa-3x fa-image"></i>
@@ -68,6 +68,13 @@ export const ImageUploadUI = ({
     if (status === 'uploaded') {
       return (
         <DeleteConfirmButton onConfirm={onDeleteConfirm}></DeleteConfirmButton>
+      )
+    }
+    if (status === 'error') {
+      return (
+        <button onClick={onChoosePhotoClick} type="button" className="button">
+          Error. Try again
+        </button>
       )
     }
   }

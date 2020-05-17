@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ImageUploading from 'react-images-uploading'
 import { action } from '@storybook/addon-actions'
 import axios from 'axios'
 
 import { ImageUploadUI } from './ImageUploadUI'
 
-export const ImageUpload = ({ onImageUploaded, onDeleteConfirm }) => {
+export const ImageUpload = ({ onImageUploaded, onDeleteConfirm, value }) => {
   const maxNumber = 1
   const maxMbFileSize = 5
 
@@ -14,8 +14,15 @@ export const ImageUpload = ({ onImageUploaded, onDeleteConfirm }) => {
   const [progress, setProgress] = useState(0)
   const [fileObject, setFileObject] = useState({})
 
+  useEffect(() => {
+    if (value) {
+      setImage(value)
+      setStatus('uploaded')
+    }
+  }, [])
+
   function handleDeleteConfirm(file) {
-    file.onRemove()
+    file.onRemove && file.onRemove()
     setStatus('initial')
     onDeleteConfirm && onDeleteConfirm()
   }
@@ -53,7 +60,7 @@ export const ImageUpload = ({ onImageUploaded, onDeleteConfirm }) => {
       })
       .catch((error) => {
         console.log('error', error)
-        setStatus('uploaded')
+        setStatus('error')
       })
   }
 
@@ -83,24 +90,3 @@ export const ImageUpload = ({ onImageUploaded, onDeleteConfirm }) => {
     </ImageUploading>
   )
 }
-
-// <div>
-//   <button type="button" onClick={onImageUpload}>
-//     Upload images
-//   </button>
-//   <button type="button" onClick={onImageRemoveAll}>
-//     Remove all images
-//   </button>
-
-//   {imageList.map((image) => (
-//     <div key={image.key}>
-//       <img src={image.dataURL} />
-//       <button type="button" onClick={image.onUpdate}>
-//         Update
-//       </button>
-//       <button type="button" onClick={image.onRemove}>
-//         Remove
-//       </button>
-//     </div>
-//   ))}
-// </div>

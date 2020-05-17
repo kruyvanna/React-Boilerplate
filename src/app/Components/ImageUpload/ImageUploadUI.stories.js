@@ -10,9 +10,18 @@ export default {
   component: ImageUploadUI
 }
 
-export const Default = () => (
+export const Default = () => <ImageUploadUI></ImageUploadUI>
+
+export const uploading = () => (
   <ImageUploadUI
     status="uploading"
+    image="http://res.cloudinary.com/kruyvanna/image/upload/v1589688509/images/rfpnsfiodmugnzvjspco.jpg"
+  ></ImageUploadUI>
+)
+
+export const Error = () => (
+  <ImageUploadUI
+    status="error"
     image="http://res.cloudinary.com/kruyvanna/image/upload/v1589688509/images/rfpnsfiodmugnzvjspco.jpg"
   ></ImageUploadUI>
 )
