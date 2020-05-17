@@ -1,26 +1,43 @@
+import React, { useState } from 'react'
 import ImageUploading from 'react-images-uploading'
-import React from 'react'
 import { action } from '@storybook/addon-actions'
 import axios from 'axios'
+
+import { ImageUploadUI } from './ImageUploadUI'
 
 export const ImageUpload = ({ onImageUploaded }) => {
   const maxNumber = 1
   const maxMbFileSize = 5
 
+  const [status, setStatus] = useState('initial')
+  const [image, setImage] = useState('')
+  const [progress, setProgress] = useState(0)
+  const [fileObject, setFileObject] = useState({})
+
+  function handleDeleteConfirm(file) {
+    console.log('file', file)
+    file.onRemove()
+    setStatus('initial')
+  }
+
   function onFilesChange(fileObjects) {
-    console.log('onFilesChange', fileObjects)
     if (fileObjects.length == 0) {
       return
     }
 
+    setStatus('uploading')
+
     const fileObject = fileObjects[0]
+    setFileObject(fileObject)
+    const file = fileObject.dataURL
+    setImage(file)
 
     const config = {
       onUploadProgress: function(progressEvent) {
         var percentCompleted = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
         )
-        console.log(percentCompleted)
+        setProgress(percentCompleted)
       }
     }
 
@@ -33,9 +50,11 @@ export const ImageUpload = ({ onImageUploaded }) => {
         const imageUrl = response.data.url
         console.log('uploaded file to', imageUrl)
         onImageUploaded && onImageUploaded(imageUrl)
+        setStatus('uploaded')
       })
       .catch((error) => {
         console.log('error', error)
+        setStatus('uploaded')
       })
   }
 
@@ -47,28 +66,42 @@ export const ImageUpload = ({ onImageUploaded }) => {
       maxFileSize={maxMbFileSize}
       acceptType={['jpg', 'gif', 'png']}
     >
-      {({ imageList, onImageUpload, onImageRemoveAll }) => (
-        <div>
-          <button type="button" onClick={onImageUpload}>
-            Upload images
-          </button>
-          <button type="button" onClick={onImageRemoveAll}>
-            Remove all images
-          </button>
-
-          {imageList.map((image) => (
-            <div key={image.key}>
-              <img src={image.dataURL} />
-              <button type="button" onClick={image.onUpdate}>
-                Update
-              </button>
-              <button type="button" onClick={image.onRemove}>
-                Remove
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
+      {({ imageList, onImageUpload, onImageRemoveAll }) => {
+        let file = {}
+        if (imageList.length > 0) {
+          file = imageList[0]
+        }
+        return (
+          <ImageUploadUI
+            onChoosePhotoClick={onImageUpload}
+            status={status}
+            image={image}
+            progress={progress}
+            onDeleteConfirm={() => handleDeleteConfirm(file)}
+          ></ImageUploadUI>
+        )
+      }}
     </ImageUploading>
   )
 }
+
+// <div>
+//   <button type="button" onClick={onImageUpload}>
+//     Upload images
+//   </button>
+//   <button type="button" onClick={onImageRemoveAll}>
+//     Remove all images
+//   </button>
+
+//   {imageList.map((image) => (
+//     <div key={image.key}>
+//       <img src={image.dataURL} />
+//       <button type="button" onClick={image.onUpdate}>
+//         Update
+//       </button>
+//       <button type="button" onClick={image.onRemove}>
+//         Remove
+//       </button>
+//     </div>
+//   ))}
+// </div>
