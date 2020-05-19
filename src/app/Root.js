@@ -7,7 +7,6 @@ import { ProtectedPage } from './Protected'
 import { Login } from './Auth/Login'
 import { Header } from './Header/Header'
 import { UserContextProvider } from './Context/UserContext'
-import { ProductListGraphed } from './Product/ProductListGraphed'
 import { SampleForm } from './Form/SampleForm'
 import { ComponentsShowCase } from './Components'
 import './Apollo/Client'
@@ -42,9 +41,6 @@ export const Root = () => {
           </Route>
           <Route path="/login">
             <Login></Login>
-          </Route>
-          <Route path="/products">
-            <ProductListGraphed></ProductListGraphed>
           </Route>
           <Route path="/form">
             <SampleForm></SampleForm>
