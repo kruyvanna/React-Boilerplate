@@ -6,9 +6,17 @@ export const UserHeader = () => {
   const [user, setUser] = useUser()
 
   const logout = () => {
+    console.log('logout')
     setUser({
       loggedIn: false
     })
+
+    const toBeSavedUser = {
+      name: '',
+      loggedIn: false
+    }
+
+    localStorage.setItem('user', JSON.stringify(toBeSavedUser))
   }
 
   return (
