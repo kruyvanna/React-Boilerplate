@@ -13,6 +13,10 @@ export const UserHeader = observer(() => {
     });
   };
 
+  if (!user.isLoggedIn) {
+    return <div></div>;
+  }
+
   return (
     <div className="navbar-item has-dropdown is-hoverable">
       <NavLink
