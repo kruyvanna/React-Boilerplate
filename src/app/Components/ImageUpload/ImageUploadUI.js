@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-import { DeleteConfirmButton } from '../DeleteConfirmButton'
+import { DeleteConfirmButton } from "../DeleteConfirmButton";
 
 const LeftBox = styled.section`
   width: 100px;
@@ -11,71 +11,71 @@ const LeftBox = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const RightBox = styled.section`
   margin-left: 20px;
-`
+`;
 
 const ProgressBar = styled.progress`
   width: 100px;
   height: 7px;
-`
+`;
 
 const Image = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 10px;
   object-fit: cover;
-`
+`;
 
 export const ImageUploadUI = ({
   status,
   image,
   onChoosePhotoClick,
   progress,
-  onDeleteConfirm
+  onDeleteConfirm,
 }) => {
   function renderLeftContent() {
-    if (status === 'initial' || status === 'error') {
+    if (status === "initial" || status === "error") {
       return (
         <span className="icon is-large">
           <i className="fa fa-3x fa-image"></i>
         </span>
-      )
+      );
     } else {
-      return <Image src={image} alt="" />
+      return <Image src={image} alt="" />;
     }
   }
 
   function renderRightContent() {
-    if (status === 'initial') {
+    if (status === "initial") {
       return (
         <button onClick={onChoosePhotoClick} type="button" className="button">
           Choose photo
         </button>
-      )
+      );
     }
-    if (status === 'uploading') {
+    if (status === "uploading") {
       return (
         <ProgressBar
           className="progress is-primary"
           value={progress}
           max="100"
         ></ProgressBar>
-      )
+      );
     }
-    if (status === 'uploaded') {
+    if (status === "uploaded") {
       return (
         <DeleteConfirmButton onConfirm={onDeleteConfirm}></DeleteConfirmButton>
-      )
+      );
     }
-    if (status === 'error') {
+    if (status === "error") {
       return (
         <button onClick={onChoosePhotoClick} type="button" className="button">
           Error. Try again
         </button>
-      )
+      );
     }
   }
 
@@ -90,5 +90,5 @@ export const ImageUploadUI = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

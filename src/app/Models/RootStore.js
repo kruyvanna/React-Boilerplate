@@ -1,14 +1,14 @@
-import { types, flow, onSnapshot } from 'mobx-state-tree'
-import { userStore, UserStore } from './UserModel'
+import { types, onSnapshot } from "mobx-state-tree";
+import { userStore, UserStore } from "./UserModel";
 
 const RootStore = types.model({
-  userStore: types.maybe(UserStore)
-})
+  userStore: types.maybe(UserStore),
+});
 
 export const rootStore = RootStore.create({
-  userStore: userStore
-})
+  userStore: userStore,
+});
 
 onSnapshot(rootStore, (snapshot) => {
-  console.dir(snapshot)
-})
+  console.dir(snapshot);
+});
