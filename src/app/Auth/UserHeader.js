@@ -1,21 +1,22 @@
-import React, { useContext } from 'react'
-import { observer } from 'mobx-react-lite'
-import { NavLink } from 'react-router-dom'
-import { rootStore } from '../Models/RootStore'
+import React, { useContext } from "react";
+import { observer } from "mobx-react-lite";
+import { NavLink } from "react-router-dom";
+import { rootStore } from "../Models/RootStore";
 
 export const UserHeader = observer(() => {
-  const { userStore } = rootStore
-  const user = userStore.currentUser || {}
+  const { userStore } = rootStore;
+  const user = userStore.currentUser || {};
 
   const logout = () => {
-    userStore.setIsLoggedIn(false)
-    userStore.setCurrentUser({})
-  }
+    userStore.setCurrentUser({
+      isLoggedIn: false,
+    });
+  };
 
   return (
     <div className="navbar-item has-dropdown is-hoverable">
       <NavLink
-        to={'/user/' + user.id}
+        to={"/user/" + user.id}
         className="navbar-item"
         activeClassName="is-active"
       >
@@ -27,5 +28,5 @@ export const UserHeader = observer(() => {
         </a>
       </div>
     </div>
-  )
-})
+  );
+});

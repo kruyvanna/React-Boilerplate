@@ -1,26 +1,26 @@
-import React, { useContext } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
-import { observer } from 'mobx-react-lite'
-import { rootStore } from '../Models/RootStore'
+import React, { useContext } from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+import { rootStore } from "../Models/RootStore";
 
 export const Login = observer(() => {
-  let history = useHistory()
-  let location = useLocation()
+  let history = useHistory();
+  let location = useLocation();
 
-  const { userStore } = rootStore
+  const { userStore } = rootStore;
 
-  let { from } = location.state || { from: { pathname: '/' } }
+  let { from } = location.state || { from: { pathname: "/" } };
 
   let login = () => {
     const loggedInUser = {
-      id: '1',
-      name: 'Vanna'
-    }
+      id: "1",
+      name: "Vanna",
+      isLoggedIn: true,
+    };
 
-    userStore.setIsLoggedIn(true)
-    userStore.setCurrentUser(loggedInUser)
-    history.replace(from)
-  }
+    userStore.setCurrentUser(loggedInUser);
+    history.replace(from);
+  };
 
   return (
     <section className="hero is-primary is-fullheight">
@@ -63,5 +63,5 @@ export const Login = observer(() => {
         </div>
       </div>
     </section>
-  )
-})
+  );
+});

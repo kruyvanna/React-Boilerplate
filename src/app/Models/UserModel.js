@@ -1,32 +1,39 @@
-import { types, flow } from 'mobx-state-tree'
+import { types, flow } from "mobx-state-tree";
 
 const User = types.model({
-  id: '',
-  name: '',
-  username: '',
-  role: ''
-})
+  id: "",
+  name: "",
+  username: "",
+  role: "",
+  isLoggedIn: false,
+});
 
 export const UserStore = types
   .model({
-    status: '',
+    status: "",
     users: types.array(User),
     currentUser: types.maybe(User),
-    isLoggedIn: false
   })
   .actions((self) => ({
-    setIsLoggedIn(newStatus) {
-      self.isLoggedIn = newStatus
-    },
     changeStatus(newStatus) {
-      self.status = newStatus
+      self.status = newStatus;
     },
     setCurrentUser(newUser) {
-      self.currentUser = newUser
-    }
-  }))
+      self.currentUser = newUser;
+      localStorage.setItem("user", JSON.stringify(newUser));
+    },
+  }));
+
+let user = {
+  isLoggedIn: false,
+};
+const storedUser = localStorage.getItem("user");
+if (storedUser) {
+  user = JSON.parse(storedUser);
+  console.log("using stored user", user);
+}
 
 export const userStore = UserStore.create({
-  status: 'loading',
-  isLoggedIn: false
-})
+  status: "loading",
+  currentUser: user,
+});
