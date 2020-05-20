@@ -1,15 +1,21 @@
 import React, { useContext } from 'react'
-import { useUser } from '../Context/UserContext'
-import { Route, Redirect } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
 
-export const PrivateRoute = ({ children, ...rest }) => {
-  const [user] = useUser()
+import { Route, Redirect } from 'react-router-dom'
+import { rootStore } from '../Models/RootStore'
+
+export const PrivateRoute = observer(({ children, ...rest }) => {
+  const { userStore } = rootStore
+  console.log(
+    'private route, will not rerender if comment out this line',
+    userStore.isLoggedIn
+  )
 
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        user.loggedIn ? (
+        userStore.isLoggedIn ? (
           children
         ) : (
           <Redirect
@@ -22,4 +28,4 @@ export const PrivateRoute = ({ children, ...rest }) => {
       }
     ></Route>
   )
-}
+})

@@ -1,22 +1,24 @@
 import React, { useContext } from 'react'
-import { useUser } from '../Context/UserContext'
 import { useHistory, useLocation } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
+import { rootStore } from '../Models/RootStore'
 
-export const Login = () => {
+export const Login = observer(() => {
   let history = useHistory()
   let location = useLocation()
-  const [user, setUser] = useUser()
+
+  const { userStore } = rootStore
 
   let { from } = location.state || { from: { pathname: '/' } }
 
   let login = () => {
-    const toBeSavedUser = {
-      name: 'Vanna',
-      loggedIn: true
+    const loggedInUser = {
+      id: '1',
+      name: 'Vanna'
     }
-    setUser(toBeSavedUser)
 
-    localStorage.setItem('user', JSON.stringify(toBeSavedUser))
+    userStore.setIsLoggedIn(true)
+    userStore.setCurrentUser(loggedInUser)
     history.replace(from)
   }
 
@@ -47,7 +49,11 @@ export const Login = () => {
                 </div>
 
                 <div className="field">
-                  <button className="button is-success" onClick={login}>
+                  <button
+                    type="button"
+                    className="button is-success"
+                    onClick={login}
+                  >
                     Login
                   </button>
                 </div>
@@ -58,4 +64,4 @@ export const Login = () => {
       </div>
     </section>
   )
-}
+})

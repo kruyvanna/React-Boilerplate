@@ -1,22 +1,15 @@
 import React, { useContext } from 'react'
-import { useUser } from '../Context/UserContext'
+import { observer } from 'mobx-react-lite'
 import { NavLink } from 'react-router-dom'
+import { rootStore } from '../Models/RootStore'
 
-export const UserHeader = () => {
-  const [user, setUser] = useUser()
+export const UserHeader = observer(() => {
+  const { userStore } = rootStore
+  const user = userStore.currentUser || {}
 
   const logout = () => {
-    console.log('logout')
-    setUser({
-      loggedIn: false
-    })
-
-    const toBeSavedUser = {
-      name: '',
-      loggedIn: false
-    }
-
-    localStorage.setItem('user', JSON.stringify(toBeSavedUser))
+    userStore.setIsLoggedIn(false)
+    userStore.setCurrentUser({})
   }
 
   return (
@@ -35,4 +28,4 @@ export const UserHeader = () => {
       </div>
     </div>
   )
-}
+})
